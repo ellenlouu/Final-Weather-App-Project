@@ -1,0 +1,87 @@
+h1 {
+  background: #bdbdbd;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: 80px !important;
+  letter-spacing: 1px;
+  margin: 15px;
+}
+
+h3 {
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+ul {
+  list-style-type: none;
+  display: inline-table;
+}
+
+form {
+  background: #bdbdbd;
+  padding: 10px;
+  text-align: center;
+}
+.col-12 .col-12 {
+  padding: 10px 0px 0px 0px;
+  text-align: center;
+}
+
+#data {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 10px 200px 10px;
+}
+
+#wind {
+  border-left: 2px solid grey;
+}
+
+#date {
+  text-align: center;
+}
+
+.location {
+  display: inline;
+}
+
+.rows > * {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.bg {
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  font-family: "Source Code Pro", monospace;
+}
+
+.days {
+  border-top: 2px solid gray;
+}
+.mon {
+  padding: 0px;
+}
+
+.tue,
+.wed,
+.thur,
+.fri {
+  padding: 0px 0px 0px 20px;
+}
+
+.units {
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#degree {
+  font-size: 35px;
+}
+#city,
+#update_btn {
+  border-radius: 10px;
+}
