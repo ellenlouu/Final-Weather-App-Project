@@ -4,9 +4,124 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
+
+    <link rel="stylesheet" type="text/css" href="src/styles.css" />
+    <script src="https://kit.fontawesome.com/9131339e43.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="src/script.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet" />
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="max-width: 400px !important; margin: 40px auto;">
+                <div class="bg">
+                    <h1 div id="currentCity">
+                        Bristol
+                    </h1>
+    
+                    <p div id="date"></p>
+    
+                    <h2>
+                        <div class="temp">
+                            <span id="temperature">21</span> <span id="degree">°</span>
+                        </div>
+                        <div class="units">
+                            <a href="unitsC" id="celcius-link">c</a> /
+                            <a href="unitsF" id="fahrenheit-link">f</a>
+                        </div>
+                    </h2>
+                    <h3>
+                        <span id="weatherDescription"> Sunny </span>
+                    </h3>
+                    <div class="row" id="data">
+                        <div class="col-6" id="humidity">
+                            <i class="fas fa-tint"></i>
+                            <br />
+                            <p><span id="humidityData"> 51 </span>%</p>
+                        </div>
+                        <div class="col-6" id="wind">
+                            <i class="fas fa-wind"></i>
+                            <br />
+                            <p><span id="windData"> 8</span>km</p>
+                        </div>
+                    </div>
+                    <div class="days">
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="mon">
+                                    <li>
+                                        Mon
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-sun"></i>
+                                    </li>
+                                    <li>
+                                        18°c
+                                    </li>
+                                </ul>
+                                <ul class="tue">
+                                    <li>
+                                        Tue
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-cloud-sun"></i>
+                                    </li>
+                                    <li>
+                                        21°c
+                                    </li>
+                                </ul>
+                                <ul class="wed">
+                                    <li>
+                                        Wed
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-cloud-rain"></i>
+                                    </li>
+                                    <li>
+                                        22°c
+                                    </li>
+                                </ul>
+                                <ul class="thur">
+                                    <li>
+                                        Thur
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-snowflake"></i>
+                                    </li>
+                                    <li>
+                                        19°c
+                                    </li>
+                                </ul>
+                                <ul class="fri">
+                                    <li>
+                                        Fri
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-cloud-sun-rain"></i>
+                                    </li>
+                                    <li>
+                                        23°c
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <form>
+                        <div class="update">
+                            <input type="text" placeholder="Change City" id="city" />
+                            <input type="submit" value="Update" id="update_btn" />
+                            <button id="locationButton">📍</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
