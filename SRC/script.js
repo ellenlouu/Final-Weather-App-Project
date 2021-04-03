@@ -31,6 +31,40 @@ function formatDate(date) {
   return `Today is ${weekDays} ${dates} ${months} ${years} ${hour}:${minutes}`;
 }
 
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+   
+    let forecastHTML = `<div class="row">`;
+    let days = ["Thur", "Fri", "Sat", "Mon"];
+    days.forEach(function(day){
+  forecastHTML = forecastHTML + 
+    `
+        <div class="col-2">
+             <ul class="mon">
+                 <li>
+                  ${day}
+                 </li>
+                     <li>
+                       <img
+                       src="http://openweathermap.org/img/wn/10d@2x.png"
+                       alt=""
+                       width="42"
+                       />
+                    </li>
+                    <li>
+                        18°c
+                    </li>
+             </ul>               
+        </div>
+    `;
+
+    });
+  
+    forecastHTML = forecastHTML + `</div>`
+    forecastElement.innerHTML = forecastHTML;                   
+}
+
+
 function getWeather(response) {
   console.log(response.data);
   console.log(response);
@@ -61,6 +95,7 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position){
+    console.log(response.data);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let units = "metric";
@@ -106,3 +141,4 @@ let currentLocationButton = document.querySelector("#locationButton");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Bristol")
+displayForecast();

@@ -59,18 +59,8 @@ form {
   font-family: "Source Code Pro", monospace;
 }
 
-.days {
+.weather-forecast {
   border-top: 2px solid gray;
-}
-.mon {
-  padding: 0px;
-}
-
-.tue,
-.wed,
-.thur,
-.fri {
-  padding: 0px 0px 0px 20px;
 }
 
 .units {
