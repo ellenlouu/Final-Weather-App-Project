@@ -31,33 +31,45 @@ function formatDate(date) {
   return `Today is ${weekDays} ${dates} ${months} ${years} ${hour}:${minutes}`;
 }
 
+function formatDay(timestamp){
+let dateTwo = new Date(timestamp * 1000);
+let day = dateTwo.getDay();
+
+let dayForecast = [
+    "Sun", "Mon","Tue", "Wed", "Thur", "Fri", "Sat"
+]
+
+return dayForecast[day];
+}
+
 function displayForecast(response) {
-    console.log(response.data.daily);
+    let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
    
     let forecastHTML = `<div class="row">`;
-    let days = ["Thur", "Fri", "Sat", "Mon", "Tues"];
-    days.forEach(function(day){
+    forecast.forEach(function(forecastDay, index){
+        if (index < 5) {
   forecastHTML = forecastHTML + 
     `
         <div class="col-2">
              <ul class="mon">
                  <li>
-                  ${day}
+                  ${formatDay(forecastDay.dt)}
                  </li>
                      <li>
                        <img
-                       src="http://openweathermap.org/img/wn/10d@2x.png"
+                       src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
                        alt=""
                        width="42"
                        />
                     </li>
-                    <li>
-                        18°c
+                    <li class = "forecast-weather-temp">
+                        ${Math.round(forecastDay.temp.max)}°c
                     </li>
              </ul>               
         </div>
     `;
+        }
 
     });
   
@@ -65,10 +77,11 @@ function displayForecast(response) {
     forecastElement.innerHTML = forecastHTML;                   
 }
 
+
 function getForecast(coordinates){
 console.log(coordinates);
 let apiKey = "361230dc039099d02f70071a7c0d0798";
-let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
 }
 
@@ -93,7 +106,7 @@ function getWeather(response) {
 
 function searchCity(city){
   let apiKey = "361230dc039099d02f70071a7c0d0798";
-  let units = "Metric";
+  let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(getWeather);
 }
