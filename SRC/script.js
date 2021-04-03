@@ -31,11 +31,12 @@ function formatDate(date) {
   return `Today is ${weekDays} ${dates} ${months} ${years} ${hour}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+    console.log(response.data.daily);
     let forecastElement = document.querySelector("#forecast");
    
     let forecastHTML = `<div class="row">`;
-    let days = ["Thur", "Fri", "Sat", "Mon"];
+    let days = ["Thur", "Fri", "Sat", "Mon", "Tues"];
     days.forEach(function(day){
   forecastHTML = forecastHTML + 
     `
@@ -64,6 +65,13 @@ function displayForecast() {
     forecastElement.innerHTML = forecastHTML;                   
 }
 
+function getForecast(coordinates){
+console.log(coordinates);
+let apiKey = "361230dc039099d02f70071a7c0d0798";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+axios.get(apiUrl).then(displayForecast);
+}
+
 
 function getWeather(response) {
   console.log(response.data);
@@ -79,6 +87,8 @@ function getWeather(response) {
   );
   document.querySelector("#weatherDescription").innerHTML =
     response.data.weather[0].description;
+ getForecast(response.data.coord);
+    
 }
 
 function searchCity(city){
@@ -103,6 +113,7 @@ function searchLocation(position){
   let apiEndpoint = `https://api.openweathermap.org/data/2.5/weather?`;
   let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(getWeather);
+  
 }
 
 function getCurrentLocation(event){
@@ -141,4 +152,3 @@ let currentLocationButton = document.querySelector("#locationButton");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Bristol")
-displayForecast();
