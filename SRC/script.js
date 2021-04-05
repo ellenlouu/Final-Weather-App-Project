@@ -39,7 +39,6 @@ function getCurrentPosition(event){
 
 
 function searchLocation(position){
-console.log(response.data);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let units = "metric";
